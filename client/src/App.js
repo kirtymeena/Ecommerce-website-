@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Routes,Route,Link} from 'react-router-dom'
+import {isMobile} from 'react-device-detect';
+import Slider from './components/Slider';
+import Footer from './components/Footer';
+import Login from './pages/Login';
+import Navbar from './components/Navbar';
+import Categories from './components/Categories';
+import TopBrands from './components/TopBrands';
+import Products from './pages/Products';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+  <Router>  
+      <Routes>
+        <Route path="/login" element={<Login/>}/>
+      </Routes>
+
+        <Navbar/>
+        {/* <Slider/>
+        <Categories/>
+        <div className="divider"></div> 
+        <TopBrands/> */}
+        <Products/>
+    
+   
+     
+  
+    <Footer/>
+    
+    
+
+     
+      
+</Router>
   );
 }
 

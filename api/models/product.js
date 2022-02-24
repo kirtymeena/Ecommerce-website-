@@ -28,6 +28,12 @@ const productSchema = new mongoose.Schema({
         type:Number,
         require:true
     },
+    originalPrice:{
+        type:Number,
+    }
+    msg:{
+        type:String,
+    }
     inStock:{type:Boolean,default:true}
 
 

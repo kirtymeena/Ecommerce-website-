@@ -1,0 +1,29 @@
+.carousel{
+    overflow:hidden
+}
+.inner{
+    white-space: nowrap;
+    transition: transform 0.3s;
+    
+}
+
+.items{
+    display: inline-flex;
+    align-items:center;
+    justify-content: center;
+    height:300px;
+    width:222.3vh;
+    color:white;
+    
+   
+}
+.button{
+    position: absolute;
+    
+    
+    
+    
+    /* z-index: -1 */
+}
+
+
