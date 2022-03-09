@@ -1,8 +1,79 @@
-import React from 'react'
+import React,{ useState } from 'react'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { login } from '../redux/userSlice'
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [username,setUsername] = useState('')
+  const [password,setPassword] = useState('')
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const user= useSelector(state=>state.users.value.others)
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    
+    const data={
+      password,
+      username
+    }
+    
+    if(password && username){
+      dispatch(login(data))
+      console.log(user.others)
+      sessionStorage.setItem("id",user._id)
+      sessionStorage.setItem("username",user.username)
+      // if(errorMsg!=="Wrong Credentials"){
+      //   sessionStorage.setItem("username",username)
+        
+        navigate("/")
+      // }
+      
+    }
+    
+    
+    
+  }
+
+  useEffect(()=>{
+    console.log(username)
+    console.log(user)
+  },[])
   return (
-    <div>Login</div>
+    
+       
+          <div className="flex flex-row w-screen">
+          <div className="w-[30rem]">
+          <img src="https://img.freepik.com/free-vector/customer-woman-shopping-with-barrow-concept_40876-2550.jpg?w=740" className="object-fit  pt-4 ml-12" />
+          </div>
+         
+
+              
+       <div className="pt-[8rem] ml-[10rem] w-[40rem]">
+         <form className="pt-[2rem]" onSubmit={handleSubmit}>
+         {/* {errorMsg==="Wrong Credentails"? <span className="text-sm text-rose-600">{"Wrong Credentials"}</span>:""} */}
+           <div className="mb-8">
+           <label className="text-lg  font-semibold ">USERNAME</label>
+           <br/>
+           <input type="text" onChange={(e)=>setUsername(e.target.value)} placeholder="USERNAME" className="input input-bordered w-full mt-2 max-w-xs"/>
+           </div>
+           <div className="mb-8">
+           <label className="text-lg  font-semibold ">PASSWORD</label>
+           <br/>
+           <input type="password" onChange={(e)=>setPassword(e.target.value)} placeholder="PASSWORD" className="input input-bordered w-full mt-2 max-w-xs"/>
+            </div>
+            <p className="font-medium text-slate-500 ">Do not have an account? <Link to="/" className="text-blue-600 hover:underline">Register</Link></p>
+            <br/>
+            <button type="submit" className={`btn btn-active btn-wide bg-teal-700 hover:bg-teal-900 ${password && username?"":"btn-disabled text-white opacity-40"} `}>LOGIN</button>
+         </form>
+         </div>
+         </div>
+     
+  
   )
 }
 

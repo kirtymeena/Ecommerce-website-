@@ -1,8 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {isMobile} from 'react-device-detect';
+import { useSelector } from 'react-redux';
+
+
 const Footer = () => {
+  
   return (
-    <div className="bg-stone-300 flex flex-row justify-center mt-20">
+    <div className={`bg-stone-300 flex ${isMobile? "flex-col pb-2":"flex-row"} justify-center mt-20`}>
       <div className="px-28 flex flex-col pt-14">
         <h3 className="text-2xl">Services</h3>
         <Link to="/"><div className='pt-4 pl-1 text-lg hover:underline'>Branding</div></Link>
@@ -25,7 +30,7 @@ const Footer = () => {
         <Link to="/"><div className="pl-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></div></Link>
       </div>
       
-
+    
     </div>
   )
 }

@@ -65,8 +65,9 @@ router.get("/", async(req,res)=>{
         }
         else if(qCategory){
             products = await Product.find({
-                categories:{$in:[qCategory]
+                "categories":{"$in":[qCategory]
             },
+            
         });
         }else{
             products = await Product.find();
@@ -79,4 +80,37 @@ router.get("/", async(req,res)=>{
     }
 })
 
+// get product by gender and by category
+router.get("/:gender/:category",async(req,res)=>{
+    try{
+        const product = await Product.find({
+            'categories':[req.params.gender,req.params.category]
+        })
+        if(product){
+            res.status(200).json(product)
+        }
+        else{
+            res.status(400).json()
+        }
+    }catch(err){
+        res.status(404).json(err)
+    }
+
+})
+
+// get all products regardless of gender by category
+router.get("/:category",async(req,res)=>{
+    try{
+        const products = await Product.find({
+            'categories':{"$in":req.params.category}
+        })
+        if(!products){
+            res.status(404).json("error")
+        }
+        res.status(200).json(products)
+        
+    }catch(err){
+        res.status(400).json(err)
+    }
+})
 module.exports = router

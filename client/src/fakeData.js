@@ -1,56 +1,56 @@
 export const categoriesData = [
     {
       id:"1",
-      category:"T-Shirts",
+      category:"t-shirts",
       image:
         "https://assetscdn1.paytm.com/images/catalog/product/A/AP/APPURBANO-FASHIIMPE166717753ECC4D/1601982881191_0..jpg",
     },
     {
       id:"2",
-      category:"Dresses",
+      category:"dress",
       image:
         "https://i0.wp.com/powerdaysale.com/wp-content/uploads/2019/04/Floral-Print-Women-Summer-Vacation-Beach-Dresses-1.jpg?resize=800%2C800&ssl=1",
     },
     {
       id:"3",
-      category:"Pants",
+      category:"pants",
       image:"https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/14985212/2021/12/17/69f784ff-adf8-49cb-ba6f-056486ab24a71639732359811-Tokyo-Talkies-Women-Trousers-3211639732359205-1.jpg",
     },
     {
       id:"4",
-      category:"Sweaters",
+      category:"sweaters",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYQcpHP08ysbch6CeLRaqUh6fBSMMQQ13rAA&usqp=CAU",
     },
     {
       
       id:"5",
-      category:"Jackets",
+      category:"jackets",
       image:"https://rukminim1.flixcart.com/image/332/398/ks3jjbk0/jacket/e/d/t/m-a0amo139-tommy-hilfiger-original-imag5pz9jszuz76g.jpeg?q=50",
     },
     {
       id:"6",
-      category:"Watches",
+      category:"watches",
       image:"https://cdn.luxe.digital/media/2021/07/02102402/best-men-watches-junghans-meister-handaufzug-review-luxe-digital%402x.jpg"
     },
     {
       id:"7",
-      category:"Bags",
+      category:"bags",
       image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxQ1MX4mTRbleANimx4mu0lzzrwav7ZVb1Pg&usqp=CAU"
     },
     {
       id:"8",
-      category:"Hats",
+      category:"hats",
       image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDN3lq-LTIG0D9kdPDHgaak7HYhSMKSK6jAA&usqp=CAU"
     },
     {
       id:"9",
-      category:"Belts",
+      category:"belts",
       image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDbTT0PjxKm0_gve-zukDFo5UsVeAjy7y4_Q&usqp=CAU"
     },
     {
       id:"10",
-      category:"Saree",
+      category:"saree",
       image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRovcUIDrqMP-LndfPQRlmtwGvkUBD_TLhCg&usqp=CAU"
     }
   ];

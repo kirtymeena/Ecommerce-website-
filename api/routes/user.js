@@ -3,7 +3,7 @@ const User = require("../models/user")
 const CryptoJS = require("crypto-js");
 
 
-
+//updating user info
 router.put("/:id",async(req,res)=>{
     if(req.body.password){
          req.body.password = CryptoJS.AES.encrypt(
@@ -22,7 +22,7 @@ router.put("/:id",async(req,res)=>{
     }
 })
 
-
+//deleting user
 router.delete("/:id",async(req,res)=>{
     try{
         await User.findByIdAndDelete(req.params.id)
@@ -34,20 +34,20 @@ router.delete("/:id",async(req,res)=>{
 
 //GET USER
 // not working 
-router.get("/find/:id",async(req,res)=>{
-    try{
-        const user = await User.findById(req.params.id);
-        const{password,...others} = user._doc
-        if(req.body.isAdmin){
-            res.status(200).json(others);
-        }
-        res.status(400).json("Not Allowed!")
+// router.get("/find/:id",async(req,res)=>{
+//     try{
+//         const user = await User.findById(req.params.id);
+//         const{password,...others} = user._doc
+//         if(req.body.isAdmin){
+//             res.status(200).json(others);
+//         }
+//         res.status(400).json("Not Allowed!")
         
 
-    }catch(err){
-        res.status(500).json(err)
-    }
-});
+//     }catch(err){
+//         res.status(500).json(err)
+//     }
+// });
 
 
 

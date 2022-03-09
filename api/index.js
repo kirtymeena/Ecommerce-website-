@@ -3,6 +3,7 @@ const app = express();
 const userRoute = require('./routes/user')
 const authRoute = require("./routes/auth")
 const productRoute = require("./routes/product")
+const cartRoute = require("./routes/cart")
 // const orderRoute = require("./routes/order")
 require("./mongodb/db")
 const cors = require("cors")
@@ -14,6 +15,7 @@ app.use(express.json())
 app.use("/users",userRoute)
 app.use("/auth",authRoute)
 app.use("/products",productRoute)
+app.use("/cart",cartRoute)
 // app.use("/order",orderRoute)
 
  

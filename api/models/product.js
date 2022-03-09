@@ -12,9 +12,10 @@ const productSchema = new mongoose.Schema({
         
     },
     img:{
-        type:String,
+        type:Array,
         require:true
     },
+
     categories:{
         type:Array,
     },
@@ -30,10 +31,17 @@ const productSchema = new mongoose.Schema({
     },
     originalPrice:{
         type:Number,
-    }
+    },
     msg:{
         type:String,
-    }
+    },
+    discount:{
+        type:Number,
+    },
+    rating:{
+        type:Number,
+        default:0
+    },
     inStock:{type:Boolean,default:true}
 
 

@@ -44,7 +44,7 @@ router.put("/:id",async(req,res)=>{
 
 
 //get all orders of all user--only admin
-router.get("/", verifyTokenAdmin, async(req,res)=>{
+router.get("/", async(req,res)=>{
    
 
     try{
@@ -66,7 +66,7 @@ router.delete("/:id",async(req,res)=>{
 });
 
 //get income -- only admin
-router.get("/income",verifyTokenAdmin,async(req,res)=>{
+router.get("/income",async(req,res)=>{
     const date = new Date();
     const lastMonth = new Date(date.setMonth(date.getMonth()-1));
     const prevMonth = new Date(new Date().setMonth(date.setMonth(lastMonth.getMonth()-1)));
