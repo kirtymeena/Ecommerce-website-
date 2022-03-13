@@ -49,7 +49,7 @@ const Slider = () => {
   },[activeIndex])
 
   return (
-    <div className="mt-12 mb-12">
+    <div className="mt-20 mb-12">
      <div className='carousel'>
        
        {/* coursel */}

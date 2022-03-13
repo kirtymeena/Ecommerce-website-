@@ -1,37 +1,78 @@
 import React,{useEffect,useState} from 'react'
 import { Link,useLocation } from 'react-router-dom'
 import '../components/slider.css'
-import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import { axiosRequest } from '../apiCalls'
+import axios from 'axios';
 
 const Products = () => {
 const [products,setProducts] = useState([])
    const {gender,category} = useParams()
    const location = useLocation()
-  
+   const cat =location.pathname.split("/")[1]
+   const [filters,setFilter] = useState({})
+   const [filteredProducts,setFilteredProducts] = ([])
+
+   
   
 
    useEffect(()=>{
-        axiosRequest.get(`/${gender}/${category}`).then(res=>{
-            setProducts(res.data)
-        })
+        // axiosRequest.get(`/${gender}/${category}`).then(res=>{
+        //     setProducts(res.data)
+        // })
+        const getProduct = async()=>{
+            try{
+                const filtering = await axios.get(`/products?category=${gender}&category=${category}`)
+                setProducts(filtering.data)
+            }catch(err){
+                console.log(err)
+            }
+        }
+      
+    
+        getProduct()
+    //    console.log(products.filter(p=>p.size.includes(filters.size)).map(prod=>console.log(prod)))
+
         
-   },[location.pathname])
+   },[location.pathname,filters])
+
+   
+
+   const handleFilter=(e)=>{
+       const value = e.target.value
+       setFilter({
+           ...filters,
+           [e.target.name]:value
+       })
+   }
+ 
   return (
-    <div className="mt-12 flex flex-col">
+    <div className="mt-20 flex flex-col">
 
         
         {/* price */}
-        <div className="form-control w-full max-w-xs">
+        {/* <div className="form-control w-full max-w-xs">
             
-            <select className="select select-bordered select-xs w-32">
-                <option disabled selected>Price</option>
-                <option>Rs. 300 to 400</option>
-                <option>Rs. 500 to 700</option>
-                <option>Rs. 800 to 1000</option>
+            <select name="size" className="select select-bordered select-xs w-32" onChange={handleFilter}>
+                <option disabled selected>Size</option>
+                <option value="XS">XS</option>
+                <option valye="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
             </select>
-        </div>
+        </div> */}
+        {/* <div className="form-control w-full max-w-xs">
+            
+            <select name="sort" className="select select-bordered select-xs w-32" onChange={handleFilter}>
+                <option disabled selected>Sort:</option>
+                <option value="newest">Newest</option>
+                <option valye="desc">DESC</option>
+                <option value="asc">ASC</option>
+                
+            </select>
+        </div> */}
         
      
         

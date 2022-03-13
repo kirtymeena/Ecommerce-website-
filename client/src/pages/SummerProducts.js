@@ -20,7 +20,7 @@ const SummerProducts = () => {
             <div className='mx-12 mt-8' key={product._id}>
 
                
-            <Link to="/"><img src={product.img[0]} alt="product" className="object-contain w-48 h-54 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-x-150 hover:scale-y-150 hover:duration-300 "/>
+            <Link to={`/product/${product._id}`}><img src={product.img[0]} alt="product" className="object-contain w-48 h-54 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-x-150 hover:scale-y-150 hover:duration-300 "/>
 
             <div className="pl-2">
                 <p className=" font-semibold">{product.title} </p>

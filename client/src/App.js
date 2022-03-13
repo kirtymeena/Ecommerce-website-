@@ -11,6 +11,7 @@ import Products from './pages/Products';
 import Home from './pages/Home';
 import SummerProducts from './pages/SummerProducts';
 import Product from './pages/Product';
+import Cart from './pages/Cart';
 
 function App() {
  const Layout=()=>{
@@ -32,6 +33,7 @@ function App() {
           <Route path="/:category" element={<SummerProducts/>}/>
           <Route path="/:gender/:category" element={<Products/>}/>
           <Route path="/product/:id" element={<Product/>}/>
+          <Route path="/cart" element={<Cart/>}/>
         </Route>
         <Route path="/login" element={<Login/>}/>
         

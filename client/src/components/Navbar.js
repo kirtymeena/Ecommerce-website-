@@ -1,45 +1,48 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Navigate, useNavigate} from 'react-router-dom'
 import {isMobile} from 'react-device-detect';
 import Banner from './Banner';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getCartProduct } from '../redux/cartSlice';
-import { useState } from 'react';
+
 
 
 
 
 const Navbar = () => {
 
-    // const user = false
+   
     const user = sessionStorage.getItem("id")
-    const dispatch = useDispatch()
-    const[cliked,setCliked] = useState(0)
     const cart = useSelector(state=>state.cart.cartProd)
+    const navigate = useNavigate()
 
 
-    // useEffect(()=>{
-      // const getCart=()=>{
-      //   const data = {
+    
+
+     
+    useEffect(()=>{
+     
+      // const getCart = ()=>{
+      //   console.log("in")
+      //   const data={
       //     userId:sessionStorage.getItem("id")
       //   }
-
       //   dispatch(getCartProduct(data))
       // }
       // getCart()
+      
+      // console.log("prod",product.map(p=>p.products.map(prod=>prod)))
+      // console.log(cart)
+    
+    },[])
      
-
-    // },[cart,dispatch])
-    useEffect(()=>{
-      console.log("sdjfjk")
-    })
-     
-  
+    const Logout=()=>{
+      sessionStorage.clear()
+      navigate("/")
+    }
   return (
   <div>
-    <div className="navbar bg-base-100 shadow-xl rounded-box ">
+    <div className="navbar bg-base-100 shadow-xl rounded-box fixed z-50 ">
         <div className="flex-1">
             <Link to="/" className="btn btn-ghost normal-case text-xl font-extrabold">KSHOP</Link>   
 
@@ -133,10 +136,10 @@ const Navbar = () => {
           <span className="font-bold text-lg">{cart?cart.length:0} Items</span>
           
             
-          <span className="text-info-content">0</span>
+          {/* <span className="text-info-content">0</span> */}
           
           <div className="card-actions">
-            <button className="btn btn-primary btn-block">View cart</button>
+            <Link to="/cart" className="btn btn-primary btn-block">View cart</Link>
           </div>
         </div>
       </div>
@@ -157,7 +160,7 @@ const Navbar = () => {
           </a>
         </li>
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <li onClick={Logout}><a>Logout</a></li>
       </ul>
     </div>
  

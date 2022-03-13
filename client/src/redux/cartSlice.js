@@ -7,56 +7,63 @@ export const getCartProduct = createAsyncThunk("/cart/product",async({userId})=>
     return response.data
 })
 
-export const addcartProduct = createAsyncThunk("/cart/add",async({userId,productId,quantity})=>{
+export const addcartProduct = createAsyncThunk("/cart/add",async({userId,productId,quantity,size,price})=>{
     const response = await axios.post("/cart/add",{
         "userId":userId,
         "products":[
             {
                 "productId":productId,
-                "quantity":quantity
+                "quantity":quantity,
+                "size":size,
+                "price":price
             }
         ]
     })
+    
     return response.data
 })
 
 export const CartSlice = createSlice({
     name:"cart",
-    initialState:{
-    cartProd:[],
-    status:null,
-    error:false,
-    toggle:false
+    initialState: {
+        cartProd: [],
+        product:[],
+        price: 0,
+        status:null,
+        totalProduct:0
+  
     },
-    reducers:{},
+   
+    
     extraReducers:{
-    [getCartProduct.pending]:(state)=>{
-        state.status = 'pending';
-        state.error=false
-    },
-    [getCartProduct.fulfilled]:(state,action)=>{
-        state.cartProd = action.payload;
-        state.status = 'fulfilled'
-    },
-    [getCartProduct.error]:(state)=>{
-        state.status = 'error';
-        state.error = true
-    }
-    },
     [addcartProduct.pending]:(state)=>{
         state.status = 'pending';
-        state.error = false;
         
     },
     [addcartProduct.fulfilled]:(state,action)=>{
-        state.cartProd = action.payload
-        state.toggle = true
+        state.cartProd.push(action.payload)
+        state.totalProduct = state.cartProd.length
+        
         state.status = 'success'
     },
     [addcartProduct.error]:(state)=>{
         state.status='error';
-        state.error=true
     }
-    
+},
+// extraReducers2:{
+//     [getCartProduct.pending]:(state)=>{
+//         state.status = 'pending';
+//     },
+//     [getCartProduct.fulfilled]:(state,action)=>{
+//         state.product = action.payload;
+//         state.price+=action.payload.map(p=>p.products.productsId.map(prod=>parseInt(prod.price)))
+//         state.totalProduct = action.payload.length
+//         state.status = 'fulfilled'
+        
+//     },
+//     [getCartProduct.error]:(state)=>{
+//         state.status = 'error';
+//     }
+//     },
 })
 export default CartSlice.reducer

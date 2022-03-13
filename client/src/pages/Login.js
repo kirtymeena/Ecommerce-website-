@@ -11,8 +11,9 @@ const Login = () => {
   const [password,setPassword] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  const[error,setError] = useState(false)
   const user= useSelector(state=>state.users.value.others)
+  const status = useSelector(state=>state.users.status)
 
   const handleSubmit = (e)=>{
     e.preventDefault()
@@ -22,16 +23,25 @@ const Login = () => {
       username
     }
     
+    
     if(password && username){
       dispatch(login(data))
-      console.log(user.others)
-      sessionStorage.setItem("id",user._id)
-      sessionStorage.setItem("username",user.username)
-      // if(errorMsg!=="Wrong Credentials"){
-      //   sessionStorage.setItem("username",username)
+      if(status==='error'){
         
+            setError(true)
+      } 
+      else{
+        setError(false)
+        sessionStorage.setItem("id",user._id)
+      sessionStorage.setItem("username",user.username)
+      }
+      
+      
+      if(user!==undefined){
         navigate("/")
-      // }
+      }
+      
+      
       
     }
     
@@ -55,7 +65,7 @@ const Login = () => {
               
        <div className="pt-[8rem] ml-[10rem] w-[40rem]">
          <form className="pt-[2rem]" onSubmit={handleSubmit}>
-         {/* {errorMsg==="Wrong Credentails"? <span className="text-sm text-rose-600">{"Wrong Credentials"}</span>:""} */}
+           {error?<p className="font-semibold text-sm text-rose-600">Wrong Credentails</p>:""} 
            <div className="mb-8">
            <label className="text-lg  font-semibold ">USERNAME</label>
            <br/>
